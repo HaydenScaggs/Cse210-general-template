@@ -72,7 +72,6 @@ class Program
         private void ReturnMenu()//loops back for reentry
         {
             WriteLine("You picked:  "+ getChoice());
-            waitforkey();
             string Choice;
             do{
             Choice = getChoice();
@@ -88,7 +87,7 @@ class Program
                 case "3":
                 Create_Journal_File();
                 Load();
-                Clear();
+                //Clear();
                 waitforkey();
                 break;
                 case "4":
@@ -182,9 +181,10 @@ class Program
                     newText += Text+ "\n";
                 }
             }
-            File.WriteAllText(JournalFileName, "");
+            //Append Text Below maybe an issue here as the memory requirements maybe too high.
             File.AppendAllText(JournalFileName, $"\nEntry:  :     {randomPrompt} :{dateText}\n {newText}\n");
             WriteLine("**************ADDED TEXT******************");
+
             waitforkey();
 
         }
