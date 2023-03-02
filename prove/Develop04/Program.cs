@@ -4,7 +4,7 @@ class Program
 {
     static void Main(string[] args)
 {
-    // Creates Activities
+    // Creates Activities//Creates the list as without running it would technically be empty
     ListingActivity listingActivity = new ListingActivity
     {
         Name = "Listing Activity",
@@ -19,7 +19,7 @@ class Program
             "Who are some of your personal heroes?"
         }
     };
-
+    //Creates the list as without running it would technically be empty
     ReflectionActivity reflectionActivity = new ReflectionActivity
     {
         Name = "Reflection Activity",
