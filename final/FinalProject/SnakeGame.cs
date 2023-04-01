@@ -45,7 +45,7 @@ class SnakeGame : IRenderable
 
         
         if (newDirection == OppositeDirectionTo(_currentDirection))
-        {
+        {//Logic for certain directions
             return;
         }
 
@@ -59,8 +59,7 @@ class SnakeGame : IRenderable
         _currentDirection = _nextDirection;
         _snake.Move(_currentDirection);
 
-        // If the snake's head moves to the same position as an apple, the snake
-        // eats it.
+        // Logic for if position occupies same space eat
         if (_snake.Head.Equals(_apple.Position))
         {
             _snake.Grow();
@@ -88,9 +87,9 @@ class SnakeGame : IRenderable
         }
     }
 
-    private static Apple CreateApple()
+    private static Apple CreateApple()//Grid Grid   maybe use public class grid  getters and setters
     {
-        // Can be factored elsewhere.
+        //Yes, the constants numberOfRows and numberOfColumns can be factored out into a separate class or configuration file to make the code more maintainable and flexible.
         const int numberOfRows = 20;
         const int numberOfColumns = 20;
 

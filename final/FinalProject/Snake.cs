@@ -16,12 +16,53 @@ class Snake : IRenderable
 
     public void Move(Direction direction)
     {
-        
+        if (Dead) throw new InvalidOperationException();
+
+        Position newHead;
+        switch(direction)
+        {
+            case Direction.Up:
+                newHead = Head.DownBy(-1);
+                break;
+
+            case Direction.Left:
+                newHead = Head.RightBy(-1);
+                break;
+
+            case Direction.Down:
+                newHead = Head.DownBy(1);
+                break;
+
+            case Direction.Right:
+                newHead = Head.RightBy(1);
+                break;
+
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+
+        if (_body.Contains(newHead) || !PositionIsValid(newHead))
+        {
+            Dead = true;
+            return;
+        }
+
+        _body.Insert(0, newHead);
+
+        if (_growthSpurtsRemaining > 0)
+        {
+            _growthSpurtsRemaining--;
+        }
+        else
+        {
+            _body.RemoveAt(_body.Count - 1);
+        }
     }
 
     public void Grow()
     {
-
+        if (Dead) throw new InvalidOperationException();//The exception that is thrown when a method call is invalid for the object's current state.
+        _growthSpurtsRemaining++;//ADD
     }
 
     public void Render()
